@@ -11,6 +11,18 @@ const config = {
   module: {
     loaders: [
       {
+        test:/\.js[x]?$/,
+        loader: 'babel',
+        includes: [
+          path.resolve(__dirname, '../')
+        ],
+        exclude: path.resolve(__dirname, '../node_modules/'),
+        query: {
+          presets: ['react', 'es2015-webpack', 'stage-0'],
+          plugins: ['transform-runtime']
+        }
+      },
+      {
         test: /\.css?$/,
         loaders: ['style', 'raw'],
         include: path.resolve(__dirname, '../'),
